@@ -17,12 +17,15 @@ public class ConveyorService {
     private final BigDecimal rate = new BigDecimal(13.5);
 
     public List<LoanOfferDTO> getOffers(LoanApplicationRequestDTO loanApplicationRequestDTO) {
-        log.info("loanApplicationRequestDTO " + loanApplicationRequestDTO);
+        log.info("Loan application request DTO :: {} ", loanApplicationRequestDTO);
         List<LoanOfferDTO> listOffer = new ArrayList<>();
-
+        log.info("---------------------------------------------------------");
         listOffer.add(getLoanOffer(1L, loanApplicationRequestDTO, false, false));
+        log.info("---------------------------------------------------------");
         listOffer.add(getLoanOffer(2L, loanApplicationRequestDTO, false, true));
+        log.info("---------------------------------------------------------");
         listOffer.add(getLoanOffer(3L, loanApplicationRequestDTO, true, false));
+        log.info("---------------------------------------------------------");
         listOffer.add(getLoanOffer(4L, loanApplicationRequestDTO, true, true));
 
         return listOffer;
@@ -36,13 +39,18 @@ public class ConveyorService {
         BigDecimal currentRate = rate;
 
         currentRate = isInsuranceEnabled ? currentRate.subtract(BigDecimal.valueOf(2)) : currentRate.add(BigDecimal.valueOf(2));
-        currentRate = isSalaryClient ? currentRate.subtract(BigDecimal.valueOf(1)) : currentRate.add(BigDecimal.valueOf(1));
+        currentRate = isSalaryClient ? currentRate.subtract(BigDecimal.ONE) : currentRate.add(BigDecimal.ONE);
+
+        log.info("Current rate :: {} ", currentRate);
 
         BigDecimal monthlyInterestRate = getMonthlyInterestRate(currentRate);
+        log.info("Monthly interest rate :: {} ", monthlyInterestRate);
 
-        BigDecimal monthlyPayment = getMonthlyPayment(loanApplicationRequestDTO, monthlyInterestRate).setScale(2);
+        BigDecimal monthlyPayment = getMonthlyPayment(loanApplicationRequestDTO, monthlyInterestRate);
+        log.info("Monthly payment :: {} ", monthlyPayment);
 
         BigDecimal totalAmount = monthlyPayment.multiply(BigDecimal.valueOf(loanApplicationRequestDTO.getTerm()));
+        log.info("Total amount :: {} ", totalAmount);
 
         LoanOfferDTO loanOfferDTO = new LoanOfferDTO();
         loanOfferDTO.setApplicationId(id);
@@ -70,9 +78,9 @@ public class ConveyorService {
                         monthlyInterestRate.add(
                                 monthlyInterestRate.divide(
                                         monthlyInterestRate
-                                                .add(BigDecimal.valueOf(1))
+                                                .add(BigDecimal.ONE)
                                                 .pow(loanApplicationRequestDTO.getTerm())
-                                                .subtract(BigDecimal.valueOf(1)), 8, RoundingMode.CEILING
+                                                .subtract(BigDecimal.ONE), 8, RoundingMode.CEILING
                                 )
                         )
                 );
