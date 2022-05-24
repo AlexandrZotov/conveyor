@@ -46,7 +46,7 @@ public class ConveyorService {
         BigDecimal monthlyInterestRate = getMonthlyInterestRate(currentRate);
         log.info("Monthly interest rate :: {} ", monthlyInterestRate);
 
-        BigDecimal monthlyPayment = getMonthlyPayment(loanApplicationRequestDTO, monthlyInterestRate);
+        BigDecimal monthlyPayment = getMonthlyPayment(loanApplicationRequestDTO, monthlyInterestRate).setScale(2);
         log.info("Monthly payment :: {} ", monthlyPayment);
 
         BigDecimal totalAmount = monthlyPayment.multiply(BigDecimal.valueOf(loanApplicationRequestDTO.getTerm()));

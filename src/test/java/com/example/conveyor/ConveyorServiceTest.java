@@ -6,8 +6,8 @@ import com.example.conveyor.service.ConveyorService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,17 +15,20 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.BDDMockito.given;
+
+@SpringBootTest(
+        classes = ConveyorService.class
+)
 public class ConveyorServiceTest {
 
-    private static ConveyorService conveyorService = new ConveyorService();
-
-    @TestConfiguration
-    private static class MyConfig {
-        @Bean
-        ConveyorService conveyorService() {return new ConveyorService();}
-    }
+    @MockBean
+    private static ConveyorService conveyorService;
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -40,9 +43,11 @@ public class ConveyorServiceTest {
     public static void setUp() throws IOException {
         loanApplicationRequestDTO = new LoanApplicationRequestDTO();
         String jsonLoanApplicationRequest = JsonUtil.readResourseAsString("src/test/resources/loanApplicationRequest.json");
+        String jsonListLoanOffer = JsonUtil.readResourseAsString("src/test/resources/listLoanOffer.json");
         objectMapper.findAndRegisterModules();
         loanApplicationRequestDTO = objectMapper.readValue(jsonLoanApplicationRequest, LoanApplicationRequestDTO.class);
-        listOffer = conveyorService.getOffers(loanApplicationRequestDTO);
+        LoanOfferDTO[] loanOfferDTOS = objectMapper.readValue(jsonListLoanOffer, LoanOfferDTO[].class);
+        listOffer = new ArrayList(Arrays.asList(loanOfferDTOS));
         firstListOffer = listOffer.get(0);
         BigDecimal currentRate = rate.add(BigDecimal.valueOf(3));
         BigDecimal monthlyInterestRate = currentRate.divide(BigDecimal.valueOf(100), 8, RoundingMode.CEILING)
@@ -57,11 +62,12 @@ public class ConveyorServiceTest {
                                                 .subtract(BigDecimal.ONE), 8, RoundingMode.CEILING
                                 )
                         )
-                );
+                ).setScale(2);
     }
 
     @Test
     public void getOffersTest() {
+        given(conveyorService.getOffers(eq(loanApplicationRequestDTO))).willReturn(listOffer);
         assertThat(listOffer).isNotEmpty();
         assertThat(listOffer.size()).isEqualTo(4);
     }
