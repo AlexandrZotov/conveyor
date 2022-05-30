@@ -1,0 +1,26 @@
+{
+  "amount": 1000000,
+  "term": 36,
+  "firstName": "Ivan",
+  "lastName": "Ivanov",
+  "middleName": "",
+  "gender": "MALE",
+  "birthdate": "1991-03-29",
+  "passportSeries": "0202",
+  "passportNumber": "321123",
+  "passportIssueDate": "2009-04-21",
+  "passportIssueBranch": "ОУФМС г. Уфа",
+  "maritalStatus": "MARRIED",
+  "dependentAmount": 0,
+  "employment": {
+    "employmentStatus": "EMPLOYED",
+    "employerINN": "4545456546546",
+    "salary": 100000,
+    "position": "WORKER",
+    "workExperienceTotal": 15,
+    "workExperienceCurrent": 5
+  },
+  "account": "3211 2312 2312 1233",
+  "isInsuranceEnabled": true,
+  "isSalaryClient": false
+}

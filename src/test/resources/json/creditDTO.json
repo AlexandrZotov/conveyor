@@ -1,0 +1,299 @@
+{
+  "amount": 1000000,
+  "term": 36,
+  "monthlyPayment": 30421.94,
+  "rate": 6,
+  "psk": 1095189.84,
+  "isInsuranceEnabled": true,
+  "isSalaryClient": false,
+  "paymentSchedule": [
+    {
+      "number": 1,
+      "date": "2022-05-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 5000.00,
+      "debtPayment": 25421.94,
+      "remainingDebt": 974578.06
+    },
+    {
+      "number": 2,
+      "date": "2022-06-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 4872.90,
+      "debtPayment": 25549.04,
+      "remainingDebt": 949029.02
+    },
+    {
+      "number": 3,
+      "date": "2022-07-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 4745.15,
+      "debtPayment": 25676.79,
+      "remainingDebt": 923352.23
+    },
+    {
+      "number": 4,
+      "date": "2022-08-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 4616.77,
+      "debtPayment": 25805.17,
+      "remainingDebt": 897547.06
+    },
+    {
+      "number": 5,
+      "date": "2022-09-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 4487.74,
+      "debtPayment": 25934.20,
+      "remainingDebt": 871612.86
+    },
+    {
+      "number": 6,
+      "date": "2022-10-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 4358.07,
+      "debtPayment": 26063.87,
+      "remainingDebt": 845548.99
+    },
+    {
+      "number": 7,
+      "date": "2022-11-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 4227.75,
+      "debtPayment": 26194.19,
+      "remainingDebt": 819354.80
+    },
+    {
+      "number": 8,
+      "date": "2022-12-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 4096.78,
+      "debtPayment": 26325.16,
+      "remainingDebt": 793029.64
+    },
+    {
+      "number": 9,
+      "date": "2023-01-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 3965.15,
+      "debtPayment": 26456.79,
+      "remainingDebt": 766572.85
+    },
+    {
+      "number": 10,
+      "date": "2023-02-28",
+      "totalPayment": 30421.94,
+      "interestPayment": 3832.87,
+      "debtPayment": 26589.07,
+      "remainingDebt": 739983.78
+    },
+    {
+      "number": 11,
+      "date": "2023-03-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 3699.92,
+      "debtPayment": 26722.02,
+      "remainingDebt": 713261.76
+    },
+    {
+      "number": 12,
+      "date": "2023-04-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 3566.31,
+      "debtPayment": 26855.63,
+      "remainingDebt": 686406.13
+    },
+    {
+      "number": 13,
+      "date": "2023-05-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 3432.04,
+      "debtPayment": 26989.90,
+      "remainingDebt": 659416.23
+    },
+    {
+      "number": 14,
+      "date": "2023-06-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 3297.09,
+      "debtPayment": 27124.85,
+      "remainingDebt": 632291.38
+    },
+    {
+      "number": 15,
+      "date": "2023-07-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 3161.46,
+      "debtPayment": 27260.48,
+      "remainingDebt": 605030.90
+    },
+    {
+      "number": 16,
+      "date": "2023-08-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 3025.16,
+      "debtPayment": 27396.78,
+      "remainingDebt": 577634.12
+    },
+    {
+      "number": 17,
+      "date": "2023-09-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 2888.18,
+      "debtPayment": 27533.76,
+      "remainingDebt": 550100.36
+    },
+    {
+      "number": 18,
+      "date": "2023-10-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 2750.51,
+      "debtPayment": 27671.43,
+      "remainingDebt": 522428.93
+    },
+    {
+      "number": 19,
+      "date": "2023-11-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 2612.15,
+      "debtPayment": 27809.79,
+      "remainingDebt": 494619.14
+    },
+    {
+      "number": 20,
+      "date": "2023-12-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 2473.10,
+      "debtPayment": 27948.84,
+      "remainingDebt": 466670.30
+    },
+    {
+      "number": 21,
+      "date": "2024-01-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 2333.36,
+      "debtPayment": 28088.58,
+      "remainingDebt": 438581.72
+    },
+    {
+      "number": 22,
+      "date": "2024-02-29",
+      "totalPayment": 30421.94,
+      "interestPayment": 2192.91,
+      "debtPayment": 28229.03,
+      "remainingDebt": 410352.69
+    },
+    {
+      "number": 23,
+      "date": "2024-03-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 2051.77,
+      "debtPayment": 28370.17,
+      "remainingDebt": 381982.52
+    },
+    {
+      "number": 24,
+      "date": "2024-04-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 1909.92,
+      "debtPayment": 28512.02,
+      "remainingDebt": 353470.50
+    },
+    {
+      "number": 25,
+      "date": "2024-05-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 1767.36,
+      "debtPayment": 28654.58,
+      "remainingDebt": 324815.92
+    },
+    {
+      "number": 26,
+      "date": "2024-06-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 1624.08,
+      "debtPayment": 28797.86,
+      "remainingDebt": 296018.06
+    },
+    {
+      "number": 27,
+      "date": "2024-07-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 1480.10,
+      "debtPayment": 28941.84,
+      "remainingDebt": 267076.22
+    },
+    {
+      "number": 28,
+      "date": "2024-08-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 1335.39,
+      "debtPayment": 29086.55,
+      "remainingDebt": 237989.67
+    },
+    {
+      "number": 29,
+      "date": "2024-09-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 1189.95,
+      "debtPayment": 29231.99,
+      "remainingDebt": 208757.68
+    },
+    {
+      "number": 30,
+      "date": "2024-10-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 1043.79,
+      "debtPayment": 29378.15,
+      "remainingDebt": 179379.53
+    },
+    {
+      "number": 31,
+      "date": "2024-11-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 896.90,
+      "debtPayment": 29525.04,
+      "remainingDebt": 149854.49
+    },
+    {
+      "number": 32,
+      "date": "2024-12-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 749.28,
+      "debtPayment": 29672.66,
+      "remainingDebt": 120181.83
+    },
+    {
+      "number": 33,
+      "date": "2025-01-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 600.91,
+      "debtPayment": 29821.03,
+      "remainingDebt": 90360.80
+    },
+    {
+      "number": 34,
+      "date": "2025-02-28",
+      "totalPayment": 30421.94,
+      "interestPayment": 451.81,
+      "debtPayment": 29970.13,
+      "remainingDebt": 60390.67
+    },
+    {
+      "number": 35,
+      "date": "2025-03-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 301.96,
+      "debtPayment": 30119.98,
+      "remainingDebt": 30270.69
+    },
+    {
+      "number": 36,
+      "date": "2025-04-30",
+      "totalPayment": 30421.94,
+      "interestPayment": 151.36,
+      "debtPayment": 30270.58,
+      "remainingDebt": 0.11
+    }
+  ]
+}
