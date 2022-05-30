@@ -45,11 +45,11 @@ public class ConveyorService {
     public CreditDTO getCreditConditions(ScoringDataDTO scoringDataDTO) throws CreditValidationException {
         CreditDTO creditDTO = new CreditDTO();
 
-        String messageValid = creditDenialValidation(scoringDataDTO);
+        List<String> messageValid = creditDenialValidation(scoringDataDTO);
 
-        if (messageValid != "") {
+        if (!messageValid.isEmpty()) {
             log.info("Valid message: {}", messageValid);
-            throw new CreditValidationException(messageValid);
+            throw new CreditValidationException(messageValid.toString());
         }
 
         BigDecimal interestRate = getInterestRate(scoringDataDTO);
@@ -176,33 +176,23 @@ public class ConveyorService {
         return currentRate;
     }
 
-    private String creditDenialValidation(ScoringDataDTO scoringDataDTO) {
-        String employmentStatusValid = "", salaryValid = "", ageLessThanTwenty = "", ageOverSixtyYears = "",
-                totalExperienceLessThanTwelveMonths = "", currentExperienceLessThanThreeMonths = "";
+    private List<String> creditDenialValidation(ScoringDataDTO scoringDataDTO) {
+        List<String> messageValid = new ArrayList<>();
         int age = Calendar.getInstance().get(Calendar.YEAR) - scoringDataDTO.getBirthdate().getYear();
         BigDecimal salary = scoringDataDTO.getEmployment().getSalary();
 
         if (scoringDataDTO.getEmployment().getEmploymentStatus().equals(EmploymentStatus.UNEMPLOYED))
-            employmentStatusValid = "статус - безработный; ";
+            messageValid.add("статус - безработный");
         if (scoringDataDTO.getAmount().compareTo(salary.multiply(BigDecimal.valueOf(20))) >= 0)
-            salaryValid = "сумма займа больше, чем 20 зарплат; ";
+            messageValid.add("сумма займа больше, чем 20 зарплат");
         if (age < 20)
-            ageLessThanTwenty = "возраст менее 20 лет; ";
+            messageValid.add("возраст менее 20 лет");
         if (age > 60)
-            ageOverSixtyYears = "возраст более 60 лет; ";
+            messageValid.add("возраст более 60 лет");
         if (scoringDataDTO.getEmployment().getWorkExperienceTotal() < 12)
-            totalExperienceLessThanTwelveMonths = "общий стаж менее 12 месяцев; ";
+            messageValid.add("общий стаж менее 12 месяцев");
         if (scoringDataDTO.getEmployment().getWorkExperienceCurrent() < 3)
-            currentExperienceLessThanThreeMonths = "текущий стаж менее 3 месяцев; ";
-
-        String messageValid = new StringBuilder()
-                .append(employmentStatusValid)
-                .append(salaryValid)
-                .append(ageLessThanTwenty)
-                .append(ageOverSixtyYears)
-                .append(totalExperienceLessThanTwelveMonths)
-                .append(currentExperienceLessThanThreeMonths)
-                .toString();
+            messageValid.add("текущий стаж менее 3 месяцев");
 
         return messageValid;
     }
@@ -219,13 +209,14 @@ public class ConveyorService {
             interestPayment = remainingDebt.multiply(annualInterestRate).divide(BigDecimal.valueOf(12), 2, RoundingMode.CEILING);
             debtPayment = monthlyPayment.subtract(interestPayment);
             remainingDebt = remainingDebt.subtract(debtPayment);
-            PaymentScheduleElement paymentScheduleElement = new PaymentScheduleElement();
-            paymentScheduleElement.setNumber(i + 1);
-            paymentScheduleElement.setDate(LocalDate.now().plusMonths(i));
-            paymentScheduleElement.setTotalPayment(monthlyPayment);
-            paymentScheduleElement.setInterestPayment(interestPayment);
-            paymentScheduleElement.setDebtPayment(debtPayment);
-            paymentScheduleElement.setRemainingDebt(remainingDebt);
+            PaymentScheduleElement paymentScheduleElement = PaymentScheduleElement.builder()
+                    .number(i + 1)
+                    .date(LocalDate.now().plusMonths(i))
+                    .totalPayment(monthlyPayment)
+                    .interestPayment(interestPayment)
+                    .debtPayment(debtPayment)
+                    .remainingDebt(remainingDebt)
+                    .build();
             paymentScheduleElementList.add(paymentScheduleElement);
         }
 
